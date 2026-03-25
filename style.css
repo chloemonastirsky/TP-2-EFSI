@@ -80,3 +80,62 @@ body.won::after{
 	.card{padding:18px}
 }
 
+
+/* EMPIEZA LO COOL  */
+body.danger{
+	background: linear-gradient(120deg, #2a0000, #5a0000);
+	animation: dangerPulse 1s infinite alternate;
+}
+
+@keyframes dangerPulse{
+	from{filter:brightness(1)}
+	to{filter:brightness(1.2)}
+}
+
+body.danger .card{
+	box-shadow: 0 0 30px rgba(255,0,0,0.4);
+}
+
+body.danger .message{
+	color: #ff4d4d;
+	animation: shakeText 0.3s infinite;
+}
+
+@keyframes shakeText{
+	0%{transform:translateX(0)}
+	25%{transform:translateX(-2px)}
+	50%{transform:translateX(2px)}
+	75%{transform:translateX(-2px)}
+	100%{transform:translateX(0)}
+}
+.btn{
+	position:relative;
+	overflow:hidden;
+}
+
+.btn::after{
+	content:"";
+	position:absolute;
+	top:0;
+	left:-100%;
+	width:100%;
+	height:100%;
+	background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+	transition:0.5s;
+}
+
+.btn:hover::after{
+	left:100%;
+}
+.input-error{
+	animation: shakeInput 0.2s;
+}
+
+@keyframes shakeInput{
+	0%{transform:translateX(0)}
+	25%{transform:translateX(-4px)}
+	50%{transform:translateX(4px)}
+	75%{transform:translateX(-4px)}
+	100%{transform:translateX(0)}
+}
+

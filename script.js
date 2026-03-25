@@ -32,6 +32,9 @@ function checkGuess(){
   attemptsText.innerText = attempts
   risksText.innerText = arrayAdivinados.join(", ")
 
+  if (attempts >= 7) {
+    document.body.style.backgroundColor = "#330000";
+  }
   if(attempts >= 10){
     alert(message.innerText = "¡Perdiste! El número era " + secretNumber)
     resetGame()
@@ -40,6 +43,17 @@ function checkGuess(){
 
   if(guess === secretNumber){
     alert(message.innerText = "¡Ganaste!")
+    
+      const gif = document.getElementById("winGif");
+gif.src = "https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"; // podés cambiarlo
+gif.style.display = "block";
+
+document.body.classList.add("won");
+
+setTimeout(() => {
+  gif.style.display = "none";
+  document.body.classList.remove("won");
+}, 2000);
     resetGame()
     return
   }
@@ -52,6 +66,11 @@ function checkGuess(){
     message.innerText = "El número es menor"
   }
 
+  // modo peligro
+  if (attempts >= 8) {
+  document.body.classList.add("danger");
+  message.innerText = "⚠️ CUIDADO... ÚLTIMOS INTENTOS ⚠️";
+}
 }
 
 
@@ -65,5 +84,11 @@ function resetGame(){
   message.innerText = ""
   risksText.innerText = ""
   input.value = ""
+
+  // modo peligro
+  document.body.classList.remove("danger");
 }
+
+
+
 
