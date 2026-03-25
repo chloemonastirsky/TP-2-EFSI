@@ -18,7 +18,7 @@ input.addEventListener("keydown", function(event) {
     checkGuess();
   }
 
-  
+
 });
 function checkGuess(){
   
@@ -29,9 +29,14 @@ function checkGuess(){
     return
   }
   attempts = attempts + 1
-
   attemptsText.innerText = attempts
   risksText.innerText = arrayAdivinados.join(", ")
+
+  if(attempts >= 10){
+    alert(message.innerText = "¡Perdiste! El número era " + secretNumber)
+    resetGame()
+    return
+  }
 
   if(guess === secretNumber){
     alert(message.innerText = "¡Ganaste!")
@@ -55,16 +60,10 @@ function resetGame(){
   secretNumber = Math.floor(Math.random() * 100) + 1
   attempts = 0
   risks = 0
+  arrayAdivinados = []
   attemptsText.innerText = attempts
   message.innerText = ""
+  risksText.innerText = ""
   input.value = ""
-}
-
-function contarAttempts(){
-  
-  if (attempts === 10){
-    alert("Has alcanzado el número máximo de intentos. El número secreto era: " + secretNumber);
-    resetGame();
-  }
 }
 
